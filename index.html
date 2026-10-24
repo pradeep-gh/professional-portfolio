@@ -1,0 +1,518 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Pradeep Gupta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column of bands. Hero pairs a headline with a cargo-manifest card; then three pillars, a dated experience ledger, project grid, skills, contact. */
+:root {
+  --bg: #eef1f4;
+  --surface: #ffffff;
+  --ink: #12202e;
+  --muted: #55657a;
+  --line: #d3dae2;
+  --accent: #0b5fa5;
+  --accent-ink: #ffffff;
+  --signal: #c2410c;
+  --chip: #e3eaf1;
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1620; --surface: #142230; --ink: #e6ecf2; --muted: #98a8ba; --line: #25374a;
+    --accent: #5eaae8; --accent-ink: #08131d; --signal: #f08a54; --chip: #1c2f42;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1620; --surface: #142230; --ink: #e6ecf2; --muted: #98a8ba; --line: #25374a;
+  --accent: #5eaae8; --accent-ink: #08131d; --signal: #f08a54; --chip: #1c2f42;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 10; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 48px;
+}
+.wrap { max-width: 1080px; margin: 0 auto; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.12; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.mono { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+/* top bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 11; background: var(--bg); border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: center; justify-content: space-between; padding: 14px 0; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+.nav { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.95rem; }
+.nav a { color: var(--ink); text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; }
+.nav a:hover, .nav a.active { border-bottom-color: var(--accent); }
+.nav a.active { color: var(--accent); font-weight: 600; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 40px; padding: 44px 0 56px; align-items: start; }
+.hero h1 { font-size: clamp(2.3rem, 5.6vw, 4rem); font-weight: 700; letter-spacing: -0.025em; margin: 14px 0 20px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 34em; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { display: inline-block; font: 600 0.98rem var(--font-body); padding: 12px 20px; border-radius: 6px; text-decoration: none; border: 1.5px solid var(--accent); cursor: pointer; }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:hover { filter: brightness(1.08); }
+
+.manifest { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--signal); border-radius: 4px; padding: 20px 22px 8px; }
+.manifest .mono { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px dashed var(--line); }
+.manifest dl { margin: 0; }
+.manifest .row { display: grid; grid-template-columns: 7.2rem minmax(0, 1fr); gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 0.97rem; }
+.manifest .row:last-child { border-bottom: 0; }
+.manifest dt { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.manifest dd { margin: 0; font-weight: 500; }
+
+/* sections */
+section { padding: 52px 0; border-top: 1px solid var(--line); scroll-margin-top: 84px; }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 30px; }
+.sec-head h2 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; }
+.sec-head p { color: var(--muted); max-width: 42em; }
+
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.pillar h3 { font-size: 1.35rem; }
+.pillar ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 9px; color: var(--ink); font-size: 0.98rem; }
+.pillar li::marker { color: var(--accent); }
+.pillars.four { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.pillars.four .pillar { padding: 22px; }
+.pillars.four .pillar h3 { font-size: 1.12rem; }
+.pillars.four .pillar p { font-size: 0.96rem; }
+.pillar.wide { margin-top: 20px; }
+.pillar.wide p { font-size: 0.97rem; max-width: 52em; }
+
+/* experience ledger: chronological, so the date column carries information */
+.ledger { display: flex; flex-direction: column; }
+.job { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 8px 32px; padding: 26px 0; border-top: 1px solid var(--line); }
+.job:first-child { border-top: 0; padding-top: 0; }
+.job .when { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); padding-top: 5px; letter-spacing: 0.03em; }
+.job h3 { font-size: 1.25rem; }
+.job .org { color: var(--accent); font-weight: 600; margin: 2px 0 10px; }
+.job ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; font-size: 0.98rem; }
+.job li::marker { color: var(--muted); }
+.metrics { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.metrics span { font-size: 0.86rem; background: var(--chip); border-left: 3px solid var(--signal); padding: 4px 10px; border-radius: 3px; }
+.metrics b { font-family: var(--font-mono); font-weight: 500; margin-right: 4px; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; margin-bottom: 56px; }
+.stats div { background: var(--surface); padding: 18px 20px; display: flex; flex-direction: column; gap: 4px; }
+.stats b { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.stats span { font-size: 0.88rem; color: var(--muted); line-height: 1.35; }
+
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.project h3 { font-size: 1.2rem; }
+.project p { font-size: 0.97rem; color: var(--ink); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.chip { font-family: var(--font-mono); font-size: 0.74rem; background: var(--chip); color: var(--ink); padding: 3px 8px; border-radius: 3px; }
+
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px; }
+.skills h3 { font-size: 1.02rem; margin-bottom: 10px; }
+.skills .chips { margin-top: 0; padding-top: 0; }
+
+.edu { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.edu div { border-left: 3px solid var(--accent); padding-left: 14px; }
+.edu strong { display: block; font-family: var(--font-display); font-size: 1.08rem; }
+.edu span { color: var(--muted); font-size: 0.95rem; }
+
+.contact { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
+.contact h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 700; letter-spacing: -0.02em; max-width: 18em; }
+.mail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.mail code { font-family: var(--font-mono); font-size: 1rem; background: var(--surface); border: 1px solid var(--line); padding: 10px 14px; border-radius: 4px; user-select: all; overflow-wrap: anywhere; }
+footer { padding-top: 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 28px; }
+  .job { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .job .when { padding-top: 0; }
+  .top { flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px 0 8px; }
+  .nav { width: 100%; flex-wrap: nowrap; overflow-x: auto; gap: 18px; font-size: 0.92rem; }
+  .nav a { white-space: nowrap; }
+  body { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top">Pradeep Gupta</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#strengths">Strengths</a>
+      <a href="#ai">AI</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#security">Security</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <p class="mono">Principal Software Engineer · Technical Lead</p>
+        <h1>Enterprise Java, <em>designed and led</em> end to end.</h1>
+        <p class="lead">Thirteen years building cargo, logistics, port and revenue-management platforms. I stay close to design, code and production while leading the engineers who ship them. I also use Claude Code to speed up delivery, with project context, workflows and reviews that keep quality high.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="https://linkedin.com/in/pradeep-gupta-0a904058" target="_blank" rel="noopener">LinkedIn profile</a>
+        </div>
+      </div>
+      <aside class="manifest" aria-label="At a glance">
+        <div class="mono"><span>At a glance</span><span>Mumbai, India</span></div>
+        <dl>
+          <div class="row"><dt>Now</dt><dd>Technical Manager, Accelya (since Aug 2025)</dd></div>
+          <div class="row"><dt>Experience</dt><dd>13 years, five organisations</dd></div>
+          <div class="row"><dt>Domains</dt><dd>Cargo, logistics, ports, customs, revenue management</dd></div>
+          <div class="row"><dt>Backend</dt><dd>Java, Spring Boot, microservices, REST</dd></div>
+          <div class="row"><dt>Patterns</dt><dd>Event-driven messaging with RabbitMQ and Kafka</dd></div>
+          <div class="row"><dt>Security</dt><dd>Spring Security, OAuth2, secure integrations</dd></div>
+          <div class="row"><dt>AI tooling</dt><dd>Claude Code, CLAUDE.md context, review-gated workflows</dd></div>
+          <div class="row"><dt>Frontend</dt><dd>Angular, React / Next.js</dd></div>
+          <div class="row"><dt>Runs on</dt><dd>Docker, Kubernetes, AWS</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="stats" aria-label="Career in numbers">
+      <div><b>13</b><span>years in enterprise software</span></div>
+      <div><b>5</b><span>organisations, from developer to technical manager</span></div>
+      <div><b>6</b><span>platforms delivered across cargo, ports and billing</span></div>
+      <div><b>8</b><span>stakeholder types connected in the MAWANI port system</span></div>
+      <div><b>4</b><span>platforms evaluated in POCs: PCF, Foundry, Docker, Kubernetes</span></div>
+    </div>
+
+    <section id="strengths">
+      <div class="sec-head">
+        <p class="mono">What I bring</p>
+        <h2>Full stack builder, architect, team lead</h2>
+        <p>Three roles I have held at once on most projects, from first design review to production triage.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <h3>Java Full Stack</h3>
+          <ul>
+            <li>Spring Boot, Spring Data JPA, Spring Security, Spring Batch and REST APIs on the server.</li>
+            <li>Angular 12+ and React / Next.js on the client, with JSF where the platform requires it.</li>
+            <li>Complex JPA, JPQL and Criteria Builder queries tuned for performance-sensitive screens.</li>
+            <li>Data work across PostgreSQL, SQL Server, Oracle and MongoDB, including stored procedures for invoicing and tariff rules.</li>
+            <li>Claude Code to scaffold services and endpoints, write tests and speed up Angular and React work, while keeping to the project's own standards.</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <h3>Java Architecture</h3>
+          <ul>
+            <li>Microservices with clear service boundaries, scalability and fault tolerance.</li>
+            <li>Event-driven, message-based integrations using RabbitMQ and Kafka, plus SFTP and APIC, across many external parties.</li>
+            <li>Secure authentication with Spring Security and OAuth2.</li>
+            <li>Proofs of concept across PCF, Palantir Foundry, Docker and Kubernetes to settle design choices early.</li>
+            <li>Architecture rules, service boundaries and conventions written into a CLAUDE.md file, so AI-generated code follows the design instead of drifting from it.</li>
+          </ul>
+        </article>
+        <article class="pillar">
+          <h3>Technical Leadership</h3>
+          <ul>
+            <li>Lead teams since 2016, now as Technical Manager responsible for architecture and design direction.</li>
+            <li>Review designs and code for scalability, security, performance and maintainability.</li>
+            <li>Guide engineers on trade-offs, integration patterns and production issues.</li>
+            <li>Work with Product, QA and DevOps on delivery planning, risk and dependencies.</li>
+            <li>Set team guidelines for AI coding tools: shared context files, review expectations, and clear rules on what a person must always check.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="ai">
+      <div class="sec-head">
+        <p class="mono">AI-assisted engineering</p>
+        <h2>Engineering with Claude Code</h2>
+        <p>I use Claude Code as part of my daily development workflow. I set up the context, rules and checks first, so the AI works inside my architecture instead of guessing at it.</p>
+      </div>
+      <div class="pillars four">
+        <article class="pillar">
+          <h3>Project context</h3>
+          <p>Each project has a CLAUDE.md file that records the architecture, package structure, coding standards, build and test commands, and the decisions the AI must not change.</p>
+        </article>
+        <article class="pillar">
+          <h3>Plan, then build</h3>
+          <p>I agree a plan and the design first, then build in small steps. This keeps changes reviewable and keeps the code consistent with the service boundaries.</p>
+        </article>
+        <article class="pillar">
+          <h3>Repeatable workflows</h3>
+          <p>Recurring tasks such as scaffolding a Spring Boot service, adding an endpoint, writing tests and preparing a pull request follow defined steps, so results don't depend on how I phrase a request that day.</p>
+        </article>
+        <article class="pillar">
+          <h3>Human in control</h3>
+          <p>Tests and CI are the gate, and I review every change as I would a teammate's pull request. Design decisions and anything security-related stay with me.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="sec-head">
+        <p class="mono">Career</p>
+        <h2>Experience</h2>
+      </div>
+      <div class="ledger">
+        <article class="job">
+          <div class="when">Aug 2025 – Present</div>
+          <div>
+            <h3>Technical Manager, Software Development</h3>
+            <p class="org">Accelya Services India Pvt. Ltd.</p>
+            <div class="metrics"><span><b>5</b>review lenses: scalability, security, performance, maintainability, quality</span><span><b>4</b>stakeholder groups: Product, QA, DevOps, business</span></div>
+            <ul>
+              <li>Drive technical architecture and system design for enterprise software, aligned to product and business needs.</li>
+              <li>Review designs and code; guide engineers on implementation approach, integration patterns and production issue resolution.</li>
+              <li>Partner with Product, QA, DevOps and stakeholders; drive automation and process improvements, delivery planning and dependency resolution.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">Nov 2021 – Jul 2025</div>
+          <div>
+            <h3>Deputy Manager, Software Engineering</h3>
+            <p class="org">Portall Infosystem Pvt. Ltd.</p>
+            <div class="metrics"><span><b>3 yrs 8 mo</b>in role</span><span><b>4</b>platforms evaluated in POCs</span><span><b>4</b>core technologies: Spring Boot, Angular 15, SQL Server, JSF</span></div>
+            <ul>
+              <li>Led design and development of enterprise web applications on Spring Boot, Angular 15, SQL Server and JSF.</li>
+              <li>Architected microservices on PCF with attention to scalability, fault tolerance and maintainable service boundaries.</li>
+              <li>Implemented Spring Security and OAuth2 authentication and REST integrations; automated CI/CD with Jenkins and GitHub.</li>
+              <li>Built and deployed components with Palantir Foundry code repositories and Workshop; ran POCs on PCF, Foundry, Docker and Kubernetes.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">Apr 2016 – Nov 2021</div>
+          <div>
+            <h3>Team Lead, Software Development</h3>
+            <p class="org">Logstar ERP India Pvt. Ltd.</p>
+            <div class="metrics"><span><b>5 yrs 7 mo</b>in role</span><span><b>4</b>billing areas: invoicing, contract tariffs, slab rates, pricing rules</span></div>
+            <ul>
+              <li>Led development of cargo-management and billing modules on Spring Boot, AngularJS, SQL Server and MVC4.</li>
+              <li>Designed REST APIs for cross-module and third-party integrations across logistics workflows.</li>
+              <li>Maintained complex stored procedures behind invoicing, contract tariffs, slab rates and pricing rules.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">Jul 2014 – Mar 2016</div>
+          <div>
+            <h3>Software Developer (Associate)</h3>
+            <p class="org">Enabler Business Solutions Pvt. Ltd.</p>
+            <div class="metrics"><span><b>1 yr 9 mo</b>in role</span><span><b>6</b>modules delivered: workforce, equipment telemetry, BI dashboards, complaints, shift tracking, reporting</span></div>
+            <ul>
+              <li>Built enterprise tools and port-specific applications with .NET, SQL Server, DevExpress and FusionCharts.</li>
+              <li>Delivered modules for workforce management, equipment telemetry, BI dashboards, shift tracking and operational reporting.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="job">
+          <div class="when">Jun 2013 – Jun 2014</div>
+          <div>
+            <h3>Software Developer (Associate)</h3>
+            <p class="org">Nexgen Inventive Info Tech Pvt. Ltd.</p>
+            <div class="metrics"><span><b>1 yr</b>in role</span><span><b>5</b>business areas: quotations, RFQs, invoices, master data, reporting</span></div>
+            <ul>
+              <li>Contributed to shipping and order-management applications covering quotations, RFQs, invoices, master data and management reporting.</li>
+              <li>Worked across the full software development lifecycle.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="sec-head">
+        <p class="mono">Selected work</p>
+        <h2>Systems I have designed and delivered</h2>
+        <p>Mostly national-scale logistics and port platforms where many parties exchange data and every message has to be accounted for.</p>
+      </div>
+      <div class="projects">
+        <article class="project">
+          <h3>Cargo-RM</h3>
+          <p>Cargo revenue management covering capacity utilisation, pricing and revenue workflows. I led the technical design and delivery, and drove API and integration design with the forecasting and optimisation components, focused on availability, performance and data accuracy.</p>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">React / Next.js</span><span class="chip">PostgreSQL</span><span class="chip">Go</span><span class="chip">Kafka</span><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Kubernetes</span></div>
+        </article>
+        <article class="project">
+          <h3>MAWANI Port Community System</h3>
+          <p>Architected integration-heavy modules connecting shipping lines, agents, CFSs, rail operators, importers and exporters, terminals, Customs and government authorities. Built cloud-ready service and messaging integrations and contributed to PMIS capabilities for a national port ecosystem.</p>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">Angular 15</span><span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">APIC</span><span class="chip">RabbitMQ</span><span class="chip">PCF</span><span class="chip">Kubernetes</span></div>
+        </article>
+        <article class="project">
+          <h3>National Logistics Platform (NLPM)</h3>
+          <p>Implemented shipment tracking, Customs clearance, custodial transactions, EDI file generation and cloud document management. Led POCs for Palantir Workshop and Foundry code repositories to evaluate scalable, collaborative development.</p>
+          <div class="chips"><span class="chip">Spring Boot</span><span class="chip">Angular 15</span><span class="chip">SQL Server</span><span class="chip">Palantir Foundry</span><span class="chip">JSF</span><span class="chip">SFTP</span></div>
+        </article>
+        <article class="project">
+          <h3>Port Communication System (PCS)</h3>
+          <p>Developed integrations for message exchange between ports, terminals, Customs and inter-port systems across India. Built real-time activity tracking and automated reporting for operational visibility and compliance.</p>
+          <div class="chips"><span class="chip">.NET Core</span><span class="chip">Angular</span><span class="chip">SQL Server</span><span class="chip">jQuery</span><span class="chip">SFTP</span></div>
+        </article>
+        <article class="project">
+          <h3>GenCare</h3>
+          <p>End-to-end operations for general cargo terminals across quay, yard and gate workflows, with real-time cargo tally, equipment deployment, resource-utilisation tracking and configurable operational reports.</p>
+          <div class="chips"><span class="chip">MVC4</span><span class="chip">C#</span><span class="chip">Ajax</span><span class="chip">DevExpress</span><span class="chip">SQL Server</span></div>
+        </article>
+        <article class="project">
+          <h3>Billing System / SCINT</h3>
+          <p>Billing workflows for proforma invoices, invoicing, receipts, multidimensional tariffs, slab rates, multi-currency handling, exceptions and reconciliation, plus shipping order management from quotations and RFQs to master data and reporting.</p>
+          <div class="chips"><span class="chip">MVC4</span><span class="chip">C#</span><span class="chip">AngularJS</span><span class="chip">SQL Server</span><span class="chip">Telerik</span><span class="chip">REST</span><span class="chip">SFTP</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="security">
+      <div class="sec-head">
+        <p class="mono">Security</p>
+        <h2>Security built into design and delivery</h2>
+        <p>The platforms I work on connect customs authorities, port operators, carriers and other outside parties, so security is part of every design review.</p>
+      </div>
+      <div class="pillars four">
+        <article class="pillar">
+          <h3>Authentication and access</h3>
+          <p>Secure authentication with Spring Security and OAuth2 across enterprise web applications and microservices.</p>
+        </article>
+        <article class="pillar">
+          <h3>Secure integrations</h3>
+          <p>REST APIs, SFTP file exchange and API gateway (APIC) integrations with Customs, government authorities, partners and third-party systems.</p>
+        </article>
+        <article class="pillar">
+          <h3>Security in reviews</h3>
+          <p>Design and code reviews that check security together with scalability, performance and maintainability.</p>
+        </article>
+        <article class="pillar">
+          <h3>Multi-party ecosystems</h3>
+          <p>Message-based integrations that connect many organisations in a national port ecosystem, with Customs clearance and custodial transactions in scope.</p>
+        </article>
+      </div>
+      <article class="pillar wide">
+        <h3>Safe use of AI tools</h3>
+        <p>Secrets and credentials stay out of prompts and context files. Generated code goes through the same reviews and security checks as any other code, and each change is reviewed before it merges.</p>
+      </article>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head">
+        <p class="mono">Toolkit</p>
+        <h2>Skills and practices</h2>
+      </div>
+      <div class="skills">
+        <div><h3>Core engineering</h3><div class="chips"><span class="chip">Java 8+</span><span class="chip">Spring Boot 2.x</span><span class="chip">Spring Data JPA</span><span class="chip">Spring Security</span><span class="chip">Spring Cloud</span><span class="chip">Spring Batch</span><span class="chip">REST APIs</span><span class="chip">Microservices</span><span class="chip">Node.js</span><span class="chip">Golang</span><span class="chip">.NET Core / C#</span></div></div>
+        <div><h3>Frontend</h3><div class="chips"><span class="chip">Angular 12+</span><span class="chip">React / Next.js</span><span class="chip">JSF</span><span class="chip">JavaScript</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Bootstrap</span></div></div>
+        <div><h3>Data and messaging</h3><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">MongoDB</span><span class="chip">MySQL</span><span class="chip">Stored procedures</span><span class="chip">Kafka</span><span class="chip">RabbitMQ</span><span class="chip">SFTP</span></div></div>
+        <div><h3>Cloud and DevOps</h3><div class="chips"><span class="chip">PCF</span><span class="chip">Palantir Foundry</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Jenkins</span><span class="chip">GitHub</span><span class="chip">Maven</span><span class="chip">Gradle</span><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">GCP</span></div></div>
+        <div><h3>Engineering practices</h3><div class="chips"><span class="chip">SOLID</span><span class="chip">Design patterns</span><span class="chip">TDD</span><span class="chip">Peer reviews</span><span class="chip">Agile / Scrum</span><span class="chip">CI/CD</span><span class="chip">Performance tuning</span><span class="chip">OAuth2</span></div></div>
+        <div><h3>AI-assisted development</h3><div class="chips"><span class="chip">Claude Code</span><span class="chip">CLAUDE.md context files</span><span class="chip">Workflow design</span><span class="chip">Prompt design</span><span class="chip">Review of AI-generated changes</span></div></div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="sec-head">
+        <p class="mono">Background</p>
+        <h2>Education and certification</h2>
+      </div>
+      <div class="edu">
+        <div><strong>M.C.A.</strong><span>Punjab Technical University</span></div>
+        <div><strong>B.C.A.</strong><span>Tilak Maharashtra Vidyapeeth</span></div>
+        <div><strong>Microsoft Certified Professional</strong><span>ASP.NET MVC Web Applications</span></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <p class="mono">Contact</p>
+        <h2>Hiring for a Java architect or technical lead? Let's talk.</h2>
+        <div class="mail">
+          <code id="email">pradeepgupta077@gmail.com</code>
+          <button class="btn ghost" id="copy" type="button">Copy email</button>
+        </div>
+        <a class="btn primary" href="https://linkedin.com/in/pradeep-gupta-0a904058" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© Pradeep Gupta · Mumbai, India</footer>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var header = document.querySelector(".top");
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+  function offsetFor() { return header ? header.offsetHeight + 8 : 0; }
+  function currentY() { return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0; }
+  function pageScrolls() {
+    var de = document.documentElement;
+    return de.scrollHeight - window.innerHeight > 24;
+  }
+  function animateTo(y, target) {
+    if (!pageScrolls()) {
+      // The viewer frame is as tall as the page, so the host page does the scrolling.
+      try { target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" }); } catch (e) { target.scrollIntoView(); }
+      return;
+    }
+    var start = currentY(), dist = y - start;
+    if (reduce || Math.abs(dist) < 2) { window.scrollTo(0, y); return; }
+    var dur = Math.min(900, 350 + Math.abs(dist) * 0.25), t0 = null;
+    function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      window.scrollTo(0, start + dist * ease(p));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+    setTimeout(function () {
+      if (Math.abs(currentY() - y) > 6 && target) { try { target.scrollIntoView(); } catch (e) {} }
+    }, dur + 150);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var id = a.getAttribute("href").slice(1);
+      var target = id === "top" ? document.body : document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      var y = id === "top" ? 0 : Math.max(0, target.getBoundingClientRect().top + currentY() - offsetFor());
+      animateTo(y, target);
+    });
+  });
+
+  var secs = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  function spy() {
+    var y = currentY() + offsetFor() + 40, idx = -1;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) idx = i; });
+    if (window.innerHeight + currentY() >= document.documentElement.scrollHeight - 4) idx = secs.length - 1;
+    links.forEach(function (a, i) { a.classList.toggle("active", i === idx); });
+  }
+  window.addEventListener("scroll", spy, { passive: true });
+  window.addEventListener("resize", spy);
+  spy();
+
+  var btn = document.getElementById("copy");
+  var code = document.getElementById("email");
+  btn.addEventListener("click", function () {
+    var text = code.textContent;
+    function done() { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy email"; }, 1800); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(code);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = "Press Ctrl/Cmd+C";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+
+</body></html>
